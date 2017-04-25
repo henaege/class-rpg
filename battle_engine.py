@@ -2,13 +2,14 @@ class Battle(object):
     def __init__(self):
         pass
 
-    def fight(self):
+    def fight(self, monsters, hero, monster):
         print "Which weapon will you attack with?\n"
-        for key in the_hero.weapons.keys():
+        for key in hero.weapons.keys():
             print " * " + key
         weapon = raw_input("\n> ")
-        the_hero.attack_monster(monster, weapon)
+        hero.attack_monster(monster, weapon)
         if monster.health <= 0:
             print "You have defeated the %s!\n" % (monster.name)
-            the_hero.xp += monster.xp_value
-            the_hero.check_level()
+            hero.xp += monster.xp_value
+            monsters.pop(monster)
+            hero.check_level()

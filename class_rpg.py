@@ -1,4 +1,5 @@
 from random import randint
+import pygame
 
 # import the Hero class from hero.py
 from hero import Hero
@@ -8,6 +9,10 @@ from vampire import Vampire
 from skeleton import Skeleton
 from battle_engine import Battle
 
+pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load("./sounds/battle.ogg")
+pygame.mixer.music.play()
 the_hero = Hero(raw_input("\nWhat is thy name, brave adventurer? "))
 number_of_enemies = int(raw_input("\nHow many monsters can you fight? "))
 the_hero.cheer_hero()
@@ -24,10 +29,9 @@ for i in range(0, number_of_enemies):
 # number_of_enemies = raw_input("How many goblins can you fight? ")
 #  Run game as long as both characters have health
 def main():
-   
-    for monster in monsters:
-        print "You have encountered a %s.\n" % (monster.name)          
-        while monster.health > 0 and the_hero.is_alive():
+    while the_hero.health > 0:
+        for monster in monsters:
+            print "You have encountered a %s.\n" % (monster.name)
             print "You have %d health and a %d armor class.\n" % (the_hero.health, the_hero.armor_class)
             print "The %s has %d health, %d power and a %d armor class.\n" % (monster.name, monster.health, monster.power, monster.armor_class)
             print "What do you want to do?\n"
@@ -38,15 +42,8 @@ def main():
             print "> "
             user_input = raw_input()
             if user_input == "1":
-                print "Which weapon will you attack with?\n"
-                for key in the_hero.weapons.keys():
-                    print " * " + key
-                weapon = raw_input("\n> ")
-                the_hero.attack_monster(monster, weapon)
-                if monster.health <= 0:
-                    print "You have defeated the %s!\n" % (monster.name)
-                    the_hero.xp += monster.xp_value
-                    the_hero.check_level()
+                encounter = Battle()
+                encounter.fight(monsters, the_hero, monster)
             elif user_input == "2":
                 pass
             elif user_input == "3":
@@ -62,7 +59,7 @@ def main():
                 monster.attack_hero(the_hero)
                 if the_hero.health <= 0:
                     print """You have been killed by a %s.\nYou have failed your quest.""" % (monster.name)
-                    
+                    monsters[:]
 
                         
 
