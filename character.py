@@ -78,7 +78,7 @@ class Hero(Character):
         self.name = name
         self.health = 12
         self.power = "1d6"
-        self.armor_class = 8
+        self.armor_class = 12
         self.max_health = self.health
         self.xp = 0
         self.level = 1
@@ -87,5 +87,23 @@ class Hero(Character):
 
 class Wizard(Character):
     def __init__(self, name):
-        pass
-        
+        super(Hero, self).__init__(name)
+        self.name = name
+        self.health = 8
+        self.power = "1d4"
+        self.armor_class = 10
+        self.max_health = self.health
+        self.xp = 0
+        self.level = 1
+        self.weapons = {
+            'quarterstaff': 4,
+            'dagger': 6
+        }
+        self.potions = 4
+        self.spell_slots = 3
+        self.spells = {
+            'magic missle': 8,
+            'fireball': 12,
+            'shield': 6
+        }
+
