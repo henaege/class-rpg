@@ -12,4 +12,4 @@ class Battle(object):
             print "You have defeated the %s!\n" % (monster.name)
             hero.xp += monster.xp_value
             del monsters[monsters.index(monster)]
-        hero.check_level()
+        # hero.check_level()

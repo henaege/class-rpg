@@ -7,6 +7,9 @@ class Skeleton(object):
         self.name = "Skeleton"
         self.xp_value = 8
 
+    def __repr__(self):
+        return '' % (self.name)
+
     def is_alive(self):
         if self.health > 0:
             return True
@@ -20,5 +23,8 @@ class Skeleton(object):
         if self.attack >= hero.armor_class:
             hero.health -= self.temp_power
             print "The %s hit %s and did %d damage!\n" % (self.name, hero.name, self.temp_power)
+            print "%s now has %d health.\n" % (hero.name, hero.health)
+            if hero.health <= 0:
+                print """%s has been killed by a %s.\nthe quest has failed.""" % (hero.name, self.name)
         else:
             print "The %s missed its attack!\n" % (self.name)

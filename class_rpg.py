@@ -14,13 +14,15 @@ pygame.init()
 pygame.mixer.init()
 pygame.mixer.music.load("./sounds/battle.ogg")
 pygame.mixer.music.play()
+
 the_hero = Hero(raw_input("\nWhat is thy name, brave adventurer? "))
 number_of_enemies = int(raw_input("\nHow many monsters can you fight? "))
 the_hero.cheer_hero()
-monster_list = [Goblin(), Vampire(), Skeleton()]
+
 monsters = []
 
 for i in range(0, number_of_enemies):
+    monster_list = [Goblin(), Vampire(), Skeleton()]
     list_index = randint(0, len(monster_list)-1)
     monsters.append(monster_list[list_index])
 
@@ -44,8 +46,24 @@ def main():
             print "> "
             user_input = raw_input()
             if user_input == "1":
-                encounter = Battle()
-                encounter.fight(monsters, the_hero, monster)
+                while the_hero.health > 0 and monster.health > 0:
+                    if the_hero.health < 5:
+                        drink_potion = raw_input(the_hero.name + """'s health is getting low. Maybe a potion would help?
+1. Drink Potion
+2. Take it like a man\n
+> """)
+                        if drink_potion == "1":
+                            the_hero.health_boost()
+                        else:
+                            print "The situation looks dire...\n"
+                    encounter = Battle()
+                    encounter.fight(monsters, the_hero, monster)
+                    if monster.health > 0:
+                    # hero has attacked(or not) and goblin is still alive
+                        monster.attack_hero(the_hero)
+                    elif the_hero.health <= 0:
+                        monsters[:]
+                    
             elif user_input == "2":
                 pass
             elif user_input == "3":
@@ -56,13 +74,7 @@ def main():
             else:
                 print "Invalid input %s" % (user_input)
 
-            if monster.health > 0:
-                    # hero has attacked(or not) and goblin is still alive
-                monster.attack_hero(the_hero)
-            elif the_hero.health <= 0:
-                print """You have been killed by a %s.\nYou have failed your quest.""" % (monster.name)
-                monsters[:]
-                break
+            
         
 
                         

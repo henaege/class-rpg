@@ -8,6 +8,9 @@ class Goblin(object):
         self.armor_class = 6
         self.xp_value = 5
 
+    def __repr__(self):
+        return '' % (self.name)
+
     def is_alive(self):
         if self.health > 0:
             return True
@@ -21,6 +24,9 @@ class Goblin(object):
         if self.attack >= hero.armor_class:
             hero.health -= self.temp_power
             print "The goblin hit %s and did %d damage!\n" % (hero.name, self.temp_power)
+            print "%s now has %d health.\n" % (hero.name, hero.health)
+            if hero.health <= 0:
+                print """%s been killed by a %s.\nThe quest has failed.""" % (hero.name, self.name)
         else:
             print "The goblin missed its attack!\n"
 

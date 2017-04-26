@@ -36,12 +36,14 @@ class Hero(object):
             if self.attack >= enemy.armor_class:
                 self.temp_power = self.temp_power / 2
                 enemy.health -= self.temp_power
-                print "You strike the %s with your %s and deal %d damage!\n" % (enemy.name, weapon, self.temp_power)
+                print "%s strikes the %s with the %s and deals %d damage!\n" % (self.name, enemy.name, weapon, self.temp_power)
+                print "The %s now has %d health.\n" % (enemy.name, enemy.health)
             else:
                 print "%s missed!\n" % (self.name)
         elif self.attack >= enemy.armor_class:
                 enemy.health -= self.temp_power
-                print "You strike the %s with your %s and deal %d damage!\n" % (enemy.name, weapon, self.temp_power)
+                print "%s strikes the %s with the %s and deals %d damage!\n" % (self.name, enemy.name, weapon, self.temp_power)
+                print "The %s now has %d health.\n" % (enemy.name, enemy.health)
         else:
             print "%s missed!\n" % (self.name)
 
@@ -53,7 +55,7 @@ class Hero(object):
             if self.health > self.max_health:
                 self.health = self.max_health
             self.potions -= 1
-            print "You have %d potions left.\n" % (self.potions)
+            print "%s has %d potions left.\n" % (self.name, self.potions)
         else:
             print "No potions left!"
 
