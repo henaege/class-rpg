@@ -8,7 +8,7 @@ class Skeleton(object):
         self.xp_value = 8
 
     def __repr__(self):
-        return '' % (self.name)
+        return self.name
 
     def is_alive(self):
         if self.health > 0:

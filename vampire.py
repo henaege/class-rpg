@@ -9,7 +9,7 @@ class Vampire(object):
         self.xp_value = 10
 
     def __repr__(self):
-        return '' % (self.name)
+        return self.name
 
     def is_alive(self):
         if self.health > 0:

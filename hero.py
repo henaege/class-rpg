@@ -17,18 +17,18 @@ class Hero(object):
         # self.attack = randint(2, 12)
 
     def cheer_hero(self):
-        print "%s Fighting!\n" % self.name
+        print "\n %s Fighting!\n" % self.name
 
 # this class method returns True if hero is alive, False if hero is dead
     def is_alive(self):
         if self.health > 0:
             return True
-        elif self.health <= 0:
+        else:
             return False
        
     def attack_monster(self, enemy, weapon):
         self.attack = randint(1, 21)
-        self.temp_power = randint(1, self.weapons[weapon]) + 2
+        self.temp_power = (randint(1, self.weapons[weapon])) + 2
         if self.attack == 20:
             print "** Critical Hit!! Double Damage! **\n"
             self.temp_power = self.temp_power * 2
