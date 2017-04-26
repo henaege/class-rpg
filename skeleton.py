@@ -12,7 +12,8 @@ class Skeleton(object):
 
     def attack_hero(self, hero):
         self.attack = randint(1, 20)
-        self.temp_power = (randint(1, 6) + 2)
+        self.temp_power = (randint(1, 7) + 2)
+        print "The Skeleton is attacking!\n"
         if self.attack >= hero.armor_class:
             hero.health -= self.temp_power
             print "The %s hit %s and did %d damage!\n" % (self.name, hero.name, self.temp_power)

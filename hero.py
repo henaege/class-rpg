@@ -27,7 +27,7 @@ class Hero(object):
             return True
        
     def attack_monster(self, enemy, weapon):
-        self.attack = randint(1, 20)
+        self.attack = randint(1, 21)
         print self.attack
         self.temp_power = randint(1, self.weapons[weapon])
         if self.attack == 20:

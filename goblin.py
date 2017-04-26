@@ -13,7 +13,8 @@ class Goblin(object):
 
     def attack_hero(self, hero):
         self.attack = randint(1, 20)
-        self.temp_power = randint(1, 4)
+        self.temp_power = randint(1, 5)
+        print "The Goblin is attacking!\n"
         if self.attack >= hero.armor_class:
             hero.health -= self.temp_power
             print "The goblin hit %s and did %d damage!\n" % (hero.name, self.temp_power)
