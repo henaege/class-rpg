@@ -2,7 +2,7 @@ from random import randint
 import pygame
 
 # import the Hero class from hero.py
-from hero import Hero
+from character import *
 # import the Goblin class from goblin.py
 from monster import *
 # from goblin import Goblin
