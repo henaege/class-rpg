@@ -9,7 +9,10 @@ class Goblin(object):
         self.xp_value = 5
 
     def is_alive(self):
-        return self.health > 0
+        if self.health > 0:
+            return True
+        else:
+            return False
 
     def attack_hero(self, hero):
         self.attack = randint(1, 20)

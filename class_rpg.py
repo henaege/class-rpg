@@ -23,7 +23,6 @@ monsters = []
 for i in range(0, number_of_enemies):
     list_index = randint(0, len(monster_list)-1)
     monsters.append(monster_list[list_index])
-    print i
 
 
 # monster_list = random.shuffle(monsters)
@@ -33,7 +32,7 @@ for i in range(0, number_of_enemies):
 def main():
     while the_hero.health > 0:
         for monster in monsters:
-            print monster
+            print monsters
             print "You have encountered a %s.\n" % (monster.name)
             print "You have %d health and a %d armor class.\n" % (the_hero.health, the_hero.armor_class)
             print "The %s has %d health, %d power and a %d armor class.\n" % (monster.name, monster.health, monster.power, monster.armor_class)
@@ -60,10 +59,12 @@ def main():
             if monster.health > 0:
                     # hero has attacked(or not) and goblin is still alive
                 monster.attack_hero(the_hero)
-                if the_hero.health <= 0:
-                    print """You have been killed by a %s.\nYou have failed your quest.""" % (monster.name)
-                    monsters[:]
-        the_hero.is_alive()
+            elif the_hero.health <= 0:
+                print """You have been killed by a %s.\nYou have failed your quest.""" % (monster.name)
+                monsters[:]
+                break
+        
+
                         
 
 

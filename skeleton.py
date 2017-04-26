@@ -8,10 +8,13 @@ class Skeleton(object):
         self.xp_value = 8
 
     def is_alive(self):
-        return self.health > 0
+        if self.health > 0:
+            return True
+        else:
+            return False
 
     def attack_hero(self, hero):
-        self.attack = randint(1, 20)
+        self.attack = randint(1, 19)
         self.temp_power = (randint(1, 7) + 2)
         print "The Skeleton is attacking!\n"
         if self.attack >= hero.armor_class:

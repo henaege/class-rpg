@@ -8,9 +8,8 @@ class Battle(object):
             print " * " + key
         weapon = raw_input("\n> ")
         hero.attack_monster(monster, weapon)
-        hero.is_alive()
         if monster.health <= 0:
             print "You have defeated the %s!\n" % (monster.name)
             hero.xp += monster.xp_value
-            killed = filter(moster.is_alive(), monsters)
+            del monsters[monsters.index(monster)]
         hero.check_level()

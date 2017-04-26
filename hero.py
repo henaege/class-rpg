@@ -21,30 +21,26 @@ class Hero(object):
 
 # this class method returns True if hero is alive, False if hero is dead
     def is_alive(self):
-        if self.health <= 0:
-            return False
-        else:
+        if self.health > 0:
             return True
+        elif self.health <= 0:
+            return False
        
     def attack_monster(self, enemy, weapon):
         self.attack = randint(1, 21)
-        print self.attack
-        self.temp_power = randint(1, self.weapons[weapon])
+        self.temp_power = randint(1, self.weapons[weapon]) + 2
         if self.attack == 20:
             print "** Critical Hit!! Double Damage! **\n"
             self.temp_power = self.temp_power * 2
-        print self.temp_power
         if enemy.name == "Skeleton" and (weapon == 'sword' or weapon == 'arrow'):
             if self.attack >= enemy.armor_class:
                 self.temp_power = self.temp_power / 2
-                print self.temp_power
                 enemy.health -= self.temp_power
                 print "You strike the %s with your %s and deal %d damage!\n" % (enemy.name, weapon, self.temp_power)
             else:
                 print "%s missed!\n" % (self.name)
         elif self.attack >= enemy.armor_class:
                 enemy.health -= self.temp_power
-                print self.temp_power
                 print "You strike the %s with your %s and deal %d damage!\n" % (enemy.name, weapon, self.temp_power)
         else:
             print "%s missed!\n" % (self.name)

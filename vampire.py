@@ -9,12 +9,15 @@ class Vampire(object):
         self.xp_value = 10
 
     def is_alive(self):
-        return self.health > 0
+        if self.health > 0:
+            return True
+        else:
+            return False
 
     def attack_hero(self, hero):
         self.attack = randint(1, 20)
         self.temp_power = randint(1, 9)
-        print "the Vampire is attacking!\n"
+        print "The Vampire is attacking!\n"
         if self.attack >= hero.armor_class:
             hero.health -= self.temp_power
             print "The %s hit %s and did %d damage!\n" % (self.name, hero.name, self.temp_power)
