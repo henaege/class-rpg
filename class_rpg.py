@@ -65,7 +65,7 @@ def main():
             user_input = raw_input()
             if user_input == "1":
                 while monster.health > 0:
-                    if (the_hero.health < 5 and the_hero.health > 0) and the_hero.potions > 0):
+                    if (the_hero.health < 5 and the_hero.health > 0) and the_hero.potions > 0:
                         drink_potion = raw_input(the_hero.name + 
     """'s health is getting low. Maybe a potion would help?
     1. Drink Potion
@@ -77,7 +77,7 @@ def main():
                             the_hero.health_boost()
                         else:
                             print "The situation looks dire...\n"
-                    if (the_wiz.health < 5 and the_wiz.health > 0) and the_wiz.potions > 0):
+                    if (the_wiz.health < 5 and the_wiz.health > 0) and the_wiz.potions > 0:
                         drink_potion = raw_input(the_wiz.name + 
     """'s health is getting low. Maybe a potion would help?
     1. Drink Potion
