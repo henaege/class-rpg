@@ -17,7 +17,7 @@ class Character(object):
         self.potions = 3
 
     def cheer_hero(self):
-        print "\nGood luck to you %s! \n" % self.name
+        print("\nGood luck to you %s! \n" % self.name)
 
 # this class method returns True if hero is alive, False if hero is dead
     def is_alive(self):
@@ -30,35 +30,35 @@ class Character(object):
         self.attack = randint(1, 21)
         self.temp_power = (randint(1, self.weapons[weapon])) + 2
         if self.attack == 20:
-            print "** Critical Hit!! Double Damage! **\n"
+            print("** Critical Hit!! Double Damage! **\n")
             self.temp_power = self.temp_power * 2
         if enemy.name == "Skeleton" and (weapon == 'sword' or weapon == 'arrow'):
             if self.attack >= enemy.armor_class:
                 self.temp_power = self.temp_power / 2
                 enemy.health -= self.temp_power
-                print "%s strikes the %s with the %s and deals %d damage!\n" % (self.name, enemy.name, weapon, self.temp_power)
-                print "The %s now has %d health.\n" % (enemy.name, enemy.health)
+                print("%s strikes the %s with the %s and deals %d damage!\n" % (self.name, enemy.name, weapon, self.temp_power))
+                print("The %s now has %d health.\n" % (enemy.name, enemy.health))
             else:
-                print "%s missed!\n" % (self.name)
+                print("%s missed!\n" % (self.name))
         elif self.attack >= enemy.armor_class:
                 enemy.health -= self.temp_power
-                print "%s strikes the %s with the %s and deals %d damage!\n" % (self.name, enemy.name, weapon, self.temp_power)
-                print "The %s now has %d health.\n" % (enemy.name, enemy.health)
+                print("%s strikes the %s with the %s and deals %d damage!\n" % (self.name, enemy.name, weapon, self.temp_power))
+                print("The %s now has %d health.\n" % (enemy.name, enemy.health))
         else:
-            print "%s missed!\n" % (self.name)
+            print("%s missed!\n" % (self.name))
 
     def health_boost(self):
         amount = randint(1, 6)
         if self.potions > 0:
             self.health += amount
-            print """%s drank a magical potion and gained %d health!\n
-            %s now has %d health.""" % (self.name, amount, self.name, amount)
+            print("""%s drank a magical potion and gained %d health!\n
+            %s now has %d health.""" % (self.name, amount, self.name, self.health))
             if self.health > self.max_health:
                 self.health = self.max_health
             self.potions -= 1
-            print "%s has %d potions left.\n" % (self.name, self.potions)
+            print("%s has %d potions left.\n" % (self.name, self.potions))
         else:
-            print "No potions left!"
+            print("No potions left!")
 
     def enrage(self):
         pass
@@ -71,7 +71,7 @@ class Character(object):
         self.max_health += 2
         self.health = self.max_health
         self.temp_power += 1
-        print "You Leveled Up!"
+        print("You Leveled Up!")
 
 class Hero(Character):
     def __init__(self, name):
@@ -109,24 +109,24 @@ class Wizard(Character):
         }
 
     def cast_spell(self, spell, target):
-        print "The Wizard attempts to weave a %s spell from the fabric of magic!\n" % (spell)
+        print("%s attempts to weave a %s spell from the fabric of magic!\n" % (self.name, spell))
         self.attack = randint(10, 21)
         self.temp_power = (randint(4, 12))        
         if spell == 'magic missile' or spell == 'fireball':
             if self.attack == 20:
-                print "** Critical Hit!! Instant Kill!! **\n"
+                print("** Critical Hit!! Instant Kill!! **\n")
                 target.health = 0
             elif self.attack >= target.armor_class:
                 target.health -= self.temp_power
-                print "%s strikes the %s with the %s spell and deals %d damage!\n" % (self.name, target.name, spell, self.temp_power)
-                print "The %s now has %d health.\n" % (target.name, target.health)
+                print("%s strikes the %s with the %s spell and deals %d damage!\n" % (self.name, target.name, spell, self.temp_power))
+                print("The %s now has %d health.\n" % (target.name, target.health))
             else:
-                print "The magic was ineffective!\n"
+                print("The magic was ineffective!\n")
         elif spell == 'shield':
             self.armor_class += self.spells[spell]
-            print "A magical shield surrounds the Wizard and his armor class increases by %d" % (2)
+            print("A magical shield surrounds the Wizard and his armor class increases by %d" % (2))
         else:
-            print "The Wizard lost his concentration and the magic fizzled away!\n"
+            print("The Wizard lost his concentration and the magic fizzled away!\n")
 
 
 

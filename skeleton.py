@@ -19,12 +19,12 @@ class Skeleton(object):
     def attack_hero(self, hero):
         self.attack = randint(1, 19)
         self.temp_power = (randint(1, 7) + 2)
-        print "The Skeleton is attacking!\n"
+        print ("The Skeleton is attacking!\n")
         if self.attack >= hero.armor_class:
             hero.health -= self.temp_power
-            print "The %s hit %s and did %d damage!\n" % (self.name, hero.name, self.temp_power)
-            print "%s now has %d health.\n" % (hero.name, hero.health)
+            print ("The %s hit %s and did %d damage!\n" % (self.name, hero.name, self.temp_power))
+            print ("%s now has %d health.\n" % (hero.name, hero.health))
             if hero.health <= 0:
-                print """%s has been killed by a %s.\nthe quest has failed.""" % (hero.name, self.name)
+                print ("""%s has been killed by a %s.\nthe quest has failed.""" % (hero.name, self.name))
         else:
-            print "The %s missed its attack!\n" % (self.name)
+            print ("The %s missed its attack!\n" % (self.name))

@@ -20,15 +20,15 @@ class Monster(object):
     def attack_hero(self, hero):
         self.attack = randint(1, 20)
         self.temp_power = randint(1, 5)
-        print "The %s is attacking %s!\n" % (self.name, hero.name)
+        print("The %s is attacking %s!\n" % (self.name, hero.name))
         if self.attack >= hero.armor_class:
             hero.health -= self.temp_power
-            print "The %s hit %s and did %d damage!\n" % (self.name, hero.name, self.temp_power)
-            print "%s now has %d health.\n" % (hero.name, hero.health)
+            print("The %s hit %s and did %d damage!\n" % (self.name, hero.name, self.temp_power))
+            print("%s now has %d health.\n" % (hero.name, hero.health))
             if hero.health <= 0:
                 return hero.is_alive()
         else:
-            print "The %s missed its attack!\n" % (self.name)
+            print("The %s missed its attack!\n" % (self.name))
 
 class Goblin(Monster):
     def __init__(self):
