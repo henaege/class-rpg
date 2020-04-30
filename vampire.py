@@ -9,7 +9,7 @@ class Vampire(object):
         self.xp_value = 10
 
     def __repr__(self):
-        return '' % (self.name)
+        return self.name
 
     def is_alive(self):
         if self.health > 0:
@@ -20,12 +20,12 @@ class Vampire(object):
     def attack_hero(self, hero):
         self.attack = randint(1, 20)
         self.temp_power = randint(1, 9)
-        print "The Vampire is attacking!\n"
+        print ("The Vampire is attacking!\n")
         if self.attack >= hero.armor_class:
             hero.health -= self.temp_power
-            print "The %s hit %s and did %d damage!\n" % (self.name, hero.name, self.temp_power)
-            print "%s now has %d health.\n" % (hero.name, hero.health)
+            print("The %s hit %s and did %d damage!\n" % (self.name, hero.name, self.temp_power))
+            print ("%s now has %d health.\n" % (hero.name, hero.health))
             if hero.health <= 0:
-                print """%s has been killed by a %s.\nThe quest has failed.\n""" % (hero.name, self.name)
+                print ("""%s has been killed by a %s.\nThe quest has failed.\n""" % (hero.name, self.name))
         else:
-            print "The %s missed its attack!\n" % (self.name)
+            print ("The %s missed its attack!\n" % (self.name))
